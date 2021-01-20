@@ -76,7 +76,7 @@ export default {
       }
     },
     // --> Login
-    login: function (){
+    Login: function (){
       /*if(this.login = true){
 
       }*/

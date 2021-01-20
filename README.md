@@ -5,6 +5,12 @@
 yarn install
 ```
 
+### Compiles for electron
+```
+npm run electron:serve
+```
+
+
 ### Compiles and hot-reloads for development
 ```
 yarn serve
