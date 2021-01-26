@@ -1,25 +1,45 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { ipcMain , app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
-  { scheme: 'app', privileges: { secure: true, standard: true } }
+  { scheme: 'app', privileges: { secure: true, standard: true } },
 ])
+
+
+ipcMain.on('online-status-changed', (event, status) => {
+  console.log(status)
+  console.log('Test ok ? ')
+})
 
 async function createWindow() {
   // Create the browser window.
+
+  /* Doc :
+    Il existe de très nombreuses méthodes pour gérer une fenêtre. Vous pouvez par exemple utiliser close pour la fermer,
+    maximize pour l’agrandir ou encore minimize pour la réduire (aucune de ces trois méthodes ne prennent d’arguments).
+    Pour jouer avec les propriétés d’une fenêtre, il faudra utiliser getPropriete sauf pour les booléens pour lesquels ont utilise isPropriete,
+    et setPropriete pour définir une nouvelle valeur (avec comme argument cette valeur). Ici Propriete est la propriété que l’on veut.
+  */
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1400,
+    height: 800,
+    icon : 'src/assets/58b8353a15d8273a5cab2f71.png',
+    title: 'Hello world',
+    //maximized: false,
+    //center: true,
+    frame: false,
+    //transparent: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
     }
+
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -31,7 +51,17 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+
 }
+
+/*
+app.whenReady().then(() => {
+  onlineStatusWindow = new BrowserWindow({ width: 0, height: 0, show: false })
+  onlineStatusWindow.loadURL(`file://${__dirname}/index.html`)
+})
+*/
+
+
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -52,6 +82,7 @@ app.on('activate', () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
+
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
     try {

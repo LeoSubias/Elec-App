@@ -1,0 +1,209 @@
+<template>
+  <div class="hello">
+    <div class="main">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+</template>
+
+<script>
+//import particles from '@/views/particles'
+
+export default {
+  name: 'HelloWorld',
+  props: {},
+  data() {
+    return {
+    }
+  },
+  /*sockets: {
+    connect: function () {
+      console.log('socket connected')
+    },
+    customEmit: function (data) {
+      console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+    }
+  },*/
+  methods: {
+    clickButton: function () {
+      // $socket is socket.io-client instance
+      this.$socket.emit('emit_method')
+    },
+    /*canvasDots: function() {
+      var canvas = document.querySelector("canvas"),
+          ctx = canvas.getContext("2d"),
+          colorDot = "#FFFFFF",
+          color = "#FFFFFF";
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.display = "block";
+      ctx.fillStyle = colorDot;
+      ctx.lineWidth = 0.1;
+      ctx.strokeStyle = color;
+
+      var mousePosition = {
+        x: 30 * canvas.width / 100,
+        y: 30 * canvas.height / 100
+      };
+
+      var dots = {
+        nb: 600,
+        distance: 60,
+        d_radius: 1000000,
+        array: []
+      };
+
+      function Dot() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+
+        this.vx = -0.5 + Math.random();
+        this.vy = -0.5 + Math.random();
+
+        this.radius = Math.random();
+      }
+
+      Dot.prototype = {
+        create: function() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+          ctx.fill();
+        },
+
+        animate: function() {
+          for (var i = 0; i < dots.nb; i++) {
+            var dot = dots.array[i];
+
+            if (dot.y < 0 || dot.y > canvas.height) {
+              dot.vx = dot.vx;
+              dot.vy = -dot.vy;
+            } else if (dot.x < 0 || dot.x > canvas.width) {
+              dot.vx = -dot.vx;
+              dot.vy = dot.vy;
+            }
+            dot.x += dot.vx;
+            dot.y += dot.vy;
+          }
+        },
+
+        line: function() {
+          for (var i = 0; i < dots.nb; i++) {
+            for (var j = 0; j < dots.nb; j++) {
+              var i_dot = dots.array[i];
+              var j_dot = dots.array[j];
+
+              if (
+                  i_dot.x - j_dot.x < dots.distance &&
+                  i_dot.y - j_dot.y < dots.distance &&
+                  i_dot.x - j_dot.x > -dots.distance &&
+                  i_dot.y - j_dot.y > -dots.distance
+              ) {
+                if (
+                    i_dot.x - mousePosition.x < dots.d_radius &&
+                    i_dot.y - mousePosition.y < dots.d_radius &&
+                    i_dot.x - mousePosition.x > -dots.d_radius &&
+                    i_dot.y - mousePosition.y > -dots.d_radius
+                ) {
+                  ctx.beginPath();
+                  ctx.moveTo(i_dot.x, i_dot.y);
+                  ctx.lineTo(j_dot.x, j_dot.y);
+                  ctx.stroke();
+                  ctx.closePath();
+                }
+              }
+            }
+          }
+        }
+      };
+
+      function createDots() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < dots.nb; i++) {
+          dots.array.push(new Dot());
+          var dot = dots.array[i];
+
+          dot.create();
+        }
+
+        dot.line();
+        dot.animate();
+      }
+
+      window.onmousemove = function(parameter) {
+        mousePosition.x = parameter.pageX;
+        mousePosition.y = parameter.pageY;
+      };
+
+      mousePosition.x = window.innerWidth / 2;
+      mousePosition.y = window.innerHeight / 2;
+
+      setInterval(createDots, 1000 / 30);
+    },*/
+
+
+
+  },
+  mounted() {
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    /*particlesJS.load('particles-js', 'assets/particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });*/
+    },
+}
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+body {
+  font-family: "Lato", sans-serif;
+}
+
+
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  line-height: 150%;
+}
+
+div {
+  height: 100%;
+}
+
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+
+</style>

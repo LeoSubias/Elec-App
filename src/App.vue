@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Login/>
 <!--    <div id="nav">
       <div class="sidenav">
         <router-link to="/">Home</router-link>
@@ -11,6 +12,21 @@
     <router-view/>
   </div>
 </template>
+<script>
+//import HelloWorld from "@/views/components/HelloWorld";
+import Login from "@/views/components/Login";
+export default {
+  name: 'app',
+  components: {
+    //HelloWorld,
+    Login
+  },
+  /*data() {
+    return {
+    }
+  },*/
+}
+</script>
 
 <style>
 #app {
@@ -18,7 +34,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
+  background: #19191a;
 }
 
 #nav {

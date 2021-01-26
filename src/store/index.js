@@ -1,30 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    /*sockets: {
-      connect: function () {
-        console.log('socket connected')
-      },
-      customEmit: function () { // data
-        console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
-      }
-    },
-    methods: {
-      clickButton: function () {
-        // $socket is socket.io-client instance
-        this.$socket.emit('emit_method') // , data
-      }
-    },*/
+    connect: false,
+    message: null
   },
-  mutations: {
+  mutations:{
+    SOCKET_CONNECT: (state) => {
+      state.connect = true;
+    },
+    SOCKET_USER_MESSAGE: (state,  message) => {
+      state.message = message;
+    }
   },
   actions: {
-  },
-  modules: {
-  },
-
+    otherAction: () => {
+      return true;
+    },
+    socket_userMessage: (context, message) => {
+      context.dispatch('newMessage', message);
+      context.commit('NEW_MESSAGE_RECEIVED', message);
+      if (message.is_important) {
+        context.dispatch('alertImportantMessage', message);
+      }
+    }
+  }
 })

@@ -70,9 +70,9 @@ export default {
     Validlogin: function (){
       if(this.user.userName != null){
         if (this.user.mdp!= null){
-          this.login = true
+          this.$ref.conection.login = true
         }
-        this.login = false
+        this.$ref.conection.login = false
       }
     },
     // --> Login
