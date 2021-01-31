@@ -1,17 +1,24 @@
 <template>
-  <div class="hello">
-    <div class="main">
-      <canvas id="canvas"></canvas>
-    </div>
+  <div class="HelloWorld">
+
+      <router-link class="nav-item" to="/">Home</router-link>
+
   </div>
 </template>
 
 <script>
 //import particles from '@/views/particles'
+//import Particles from 'particles.js/particles'
+//import PartApp from '../../demo/js/app.js'
+//import PartAppLib from '../../demo/js/lib/stats'
+//import Login from "@/views/components/Login";
 
 export default {
   name: 'HelloWorld',
   props: {},
+  components: {
+    //HelloWorld,
+  },
   data() {
     return {
     }
@@ -139,16 +146,20 @@ export default {
 
       setInterval(createDots, 1000 / 30);
     },*/
-
+    /*Particles: function (){
+      Particles.load('particles-js', '@/src/demo/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
+    }*/
 
 
   },
   mounted() {
     /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    /*particlesJS.load('particles-js', 'assets/particles.json', function() {
-      console.log('callback - particles.js config loaded');
-    });*/
-    },
+    //this.Particles()
+    //PartApp()
+    //PartAppLib()
+  },
 }
 
 </script>

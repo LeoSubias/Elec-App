@@ -1,25 +1,24 @@
 <template>
   <div class="newUser">
-    <p>Hello world New User </p>
+    <p>Hello world Register </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NewUser',
+  name: 'newUser',
   props: {
   },
   data() {
     return {
-      user: {
-        nom: null,
-        prenom: null,
-        userName: null,
-        mdp: null,
-      }
+
     }
   },
   mounted() {
+
+  },
+  methods: {
+
   },
 
 }

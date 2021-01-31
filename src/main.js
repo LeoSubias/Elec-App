@@ -2,64 +2,60 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import VueSocketIO from 'vue-socket.io'
 import Vuex from 'vuex'
-import Render from './render'
+//import ApiService from './ApiService'
+import VueRouter from 'vue-router'
+import axios from 'axios'
+import Sass from '@/assets/style.sass'
+import Fortawesome from '@fortawesome/fontawesome-free'
 
+/*import Fs from '../chat'*/
+// --> Import  <-- //
+
+
+// -> Vue Use
 Vue.use(Vuex)
-Vue.use(Render)
+//Vue.use(ApiService)
+Vue.use(store)
+Vue.use(VueRouter)
+Vue.use(Sass)
+Vue.use(Fortawesome)
+Vue.use(axios)
+/*Vue.use(Fs)*/
 
-/*export default new Vuex.Store({
-  state: {},
-  mutations: {
-    "<MUTATION_PREFIX><EVENT_NAME>"() {
-      // do something
-    }
-  },
-  actions: {
-    "<ACTION_PREFIX><EVENT_NAME>"() {
-      // do something
-    }
-  }
-})*/
+// --> fin Vue Use
 
 Vue.config.productionTip = false
 
-//Vue.use(VueSocketio, 'http://socketserver.com:1923');
-
-Vue.use(new VueSocketIO({
-  debug: true,
-  connection: 'http://socketserver.com:1923',
-  /*vuex: {
-    store,
-    actionPrefix: 'SOCKET_',
-    mutationPrefix: 'SOCKET_'
-  },*/
-  //options: { path: "/my-app/" } //Optional options
-}))
-/*
 new Vue({
-
-  methods: {
-    clickButton: function(val){
-      // $socket is socket.io-client instance
-      this.$socket.emit('emit_method', val);
-    }
-  }
-})
-*/
-
-
-new Vue({
-  sockets:{
-    connect: function(){
-      console.log('socket connected')
-    },
-    customEmit: function(){
-      console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
-    }
-  },
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+
+
+/*fs.readFile('/jsonConfig/customer.json', 'urf8', (err, jsonString) =>{
+      if(err){
+        console.log("File read failled", err)
+        return
+      }
+      /!*try{
+        const customer = JSON.parse(jsonString);
+        console.log("Customer address is :", customer.address)
+          //"Customer address is: Infinity Loop Drive"
+      }catch (err){
+          console.log('error parsing Json string : ' ,err)
+      }*!/
+    try{
+        const jsonString = fs.readdirSync('/jsonConfig/customer.json');
+        const customer = JSON.parse(jsonString)
+        console.log(customer.adress)
+    }catch(err){
+        console.log(err)
+        return
+    }
+
+      console.log('File data:', jsonString)
+    });*/
+

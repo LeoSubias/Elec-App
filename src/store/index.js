@@ -6,26 +6,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     connect: false,
-    message: null
+    message: null,
+    user:[
+      {nom:'admin', userName: 'admin', mdp:'admin'},
+    ],
   },
   mutations:{
-    SOCKET_CONNECT: (state) => {
-      state.connect = true;
-    },
-    SOCKET_USER_MESSAGE: (state,  message) => {
-      state.message = message;
-    }
   },
   actions: {
-    otherAction: () => {
-      return true;
-    },
-    socket_userMessage: (context, message) => {
-      context.dispatch('newMessage', message);
-      context.commit('NEW_MESSAGE_RECEIVED', message);
-      if (message.is_important) {
-        context.dispatch('alertImportantMessage', message);
-      }
-    }
   }
 })

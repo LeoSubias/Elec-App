@@ -1,7 +1,16 @@
 <template>
   <div id="app">
-    <Login/>
-<!--    <div id="nav">
+    <transition name="fade">
+      <router-view>
+      </router-view>
+    </transition>
+<!--    <Home v-if="connect === true"/>
+    <Login v-if="connect === false"/>-->
+
+
+<!--    <Login/>
+  <HelloWorld/>-->
+<!--<div id="nav">
       <div class="sidenav">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
@@ -9,68 +18,46 @@
         <router-link to="/newUser">NewUser</router-link>
       </div>
     </div>-->
-    <router-view/>
+<!--    <div  v-bind:title="post.title + ' par ' + post.author.name">
+    </div>-->
+
   </div>
 </template>
+
 <script>
-//import HelloWorld from "@/views/components/HelloWorld";
-import Login from "@/views/components/Login";
+/*import Login from "@/views/components/Login";
+import Home from "@/views/Home"*/
 export default {
   name: 'app',
   components: {
-    //HelloWorld,
-    Login
+    /*Home,Login,*/
   },
-  /*data() {
+  data() {
     return {
     }
-  },*/
+  },
+  created() {
+  },
+  mounted() {
+  },
+  methods: {
+  },
+
 }
 </script>
 
 <style>
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css';
+/*@import './assets/style.scss';*/
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: black;
   background: #19191a;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
+.m-10{
+  margin: 10px;
 }
 </style>

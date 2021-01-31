@@ -32,14 +32,13 @@ async function createWindow() {
     title: 'Hello world',
     //maximized: false,
     //center: true,
-    frame: false,
+    frame: true,
     //transparent: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION
     }
-
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -51,17 +50,7 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
-
 }
-
-/*
-app.whenReady().then(() => {
-  onlineStatusWindow = new BrowserWindow({ width: 0, height: 0, show: false })
-  onlineStatusWindow.loadURL(`file://${__dirname}/index.html`)
-})
-*/
-
-
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
